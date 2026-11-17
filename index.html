@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Shadow Bestiary · 影戏山海</title>
+    <meta name="description" content="A shadow-play puzzle game. Read the Classic of Mountains and Seas, move the oil lamp, and name the beast behind the paper screen." />
+    <meta property="og:title" content="Shadow Bestiary · 影戏山海" />
+    <meta property="og:description" content="Name the beast behind the paper screen before the lamp burns out." />
+    <meta property="og:image" content="cover.jpg" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23f0d9a8'/%3E%3Cpath d='M14 46c6-10 12-14 18-14s9 4 12 2 4-10 8-12c-2 8-2 14-6 18s-10 4-16 4-10 2-16 2z' fill='%23281008'/%3E%3C/svg%3E" />
+    <script type="module" crossorigin src="./assets/index-LJLRCftq.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DfxmgN9I.css">
+  </head>
+  <body>
+    <canvas id="scene"></canvas>
+
+    <div id="fade"></div>
+
+    <header id="hud" class="hidden">
+      <div id="lanterns" aria-label="Lanterns left"></div>
+      <div id="progress"><span class="zh">影戏山海</span><span id="progress-n">1 / 8</span></div>
+      <div class="hud-buttons">
+        <button id="btn-help" class="icon-btn" title="How to play" aria-label="How to play">?</button>
+        <button id="btn-mute" class="icon-btn" title="Sound" aria-label="Toggle sound">♪</button>
+      </div>
+    </header>
+
+    <div id="oil" class="hidden" aria-label="Lamp oil"><div id="oil-fill"></div><span>LAMP OIL · 灯油</span></div>
+
+    <div id="lamp-dist" class="hidden">
+      <button id="btn-near" class="icon-btn" title="Bigger shadow: lamp closer to the beast (Q / scroll up)" aria-label="Bigger shadow">＋</button>
+      <span>shadow</span>
+      <button id="btn-far" class="icon-btn" title="Smaller, sharper shadow: lamp further back (E / scroll down)" aria-label="Smaller shadow">－</button>
+    </div>
+
+    <section id="tray" class="hidden" aria-label="Talismans"></section>
+
+    <section id="tutorial" class="hidden">
+      <p data-step="drag"><b>Drag</b> (or move the mouse) to carry the oil lamp behind the screen. Watch how the shadow changes.</p>
+      <p data-step="read">Each talisman quotes the <i>Shan Hai Jing</i>. Count tails, legs, wings and horns in the shadow.</p>
+      <p data-step="distance">Scroll or use <b>＋ －</b> to change the shadow size: a closer lamp casts a bigger, softer shadow.</p>
+      <button id="tut-ok" class="btn">Got it</button>
+    </section>
+
+    <section id="card" class="hidden" aria-live="polite">
+      <div class="card-inner">
+        <div class="card-status" id="card-status"></div>
+        <div class="card-head">
+          <div class="card-zh" id="card-zh"></div>
+          <div>
+            <div class="card-pinyin" id="card-pinyin"></div>
+            <div class="card-en" id="card-en"></div>
+            <div class="card-chapter" id="card-chapter"></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-text" id="card-text"></p>
+          <div>
+            <p class="card-clue" id="card-clue"></p>
+            <p class="card-lore" id="card-lore"></p>
+          </div>
+        </div>
+        <button id="card-next" class="btn primary">Next beast →</button>
+      </div>
+    </section>
+
+    <section id="title" class="overlay">
+      <div class="title-inner">
+        <div class="seal">影</div>
+        <h1><span class="zh">影戏山海</span><span class="en">Shadow Bestiary</span></h1>
+        <p class="sub">A night watch with the <i>Classic of Mountains and Seas</i></p>
+        <p class="pitch">Beasts from a 2,000-year-old bestiary are prowling behind the village's shadow-play screen. You can't see them — only their shadows. Move the oil lamp, read the ancient text, and seal each beast with the right talisman before the oil runs out.</p>
+        <button id="btn-start" class="btn primary" disabled>Loading…</button>
+        <p class="hint">Mouse, touch or keyboard · sound on recommended</p>
+      </div>
+    </section>
+
+    <section id="end" class="overlay hidden">
+      <div class="end-inner">
+        <h2 id="end-title"></h2>
+        <p id="end-sub"></p>
+        <div id="end-grid"></div>
+        <div class="end-buttons">
+          <button id="btn-relight" class="btn">Relight the lanterns &amp; continue</button>
+          <button id="btn-restart" class="btn primary">Watch another night</button>
+        </div>
+        <p class="credits">3D beasts generated with Meshy (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>; compressed and simplified, Bi Fang's second leg removed) · concept art with OpenAI gpt-image · code by Claude · classical text from the <i>Shan Hai Jing</i> (public domain)</p>
+      </div>
+    </section>
+
+  </body>
+</html>
